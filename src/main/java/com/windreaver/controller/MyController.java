@@ -30,7 +30,30 @@ public class MyController {
         if (result.hasErrors()) {
             return LOGGER.exit("pageview");
         } else {
-            model.addAttribute("result", operands.getFirstOperand() + operands.getSecondOperand());
+            String operation = operands.getOperation();
+            int firstOperand = 0;
+            int secondOperand = 0;
+            if (!operands.getFirstOperand().equals("")) {
+                firstOperand = Integer.valueOf(operands.getFirstOperand());
+            }
+            if (!operands.getSecondOperand().equals("")) {
+                secondOperand = Integer.valueOf(operands.getSecondOperand());
+            }
+            if (operation.equals("+")) {
+                model.addAttribute("result", firstOperand + secondOperand);
+            } else if (operation.equals("-")) {
+                model.addAttribute("result", firstOperand - secondOperand);
+            } else if (operation.equals("*")) {
+                model.addAttribute("result", firstOperand * secondOperand);
+            } else if (operation.equals("/")) {
+                if(secondOperand == 0) {
+                    model.addAttribute("result", "NaN");
+                } else {
+                    model.addAttribute("result", (float)firstOperand / (float)secondOperand);
+                }
+            } else {
+                model.addAttribute("result", Math.sqrt(firstOperand));
+            }
             return LOGGER.exit("redirect:/index");
         }
     }

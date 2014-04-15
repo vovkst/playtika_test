@@ -7,7 +7,7 @@ public class Operands {
     @Pattern(regexp = "[-+]?\\d+")
     private String firstOperand;
 
-    @Pattern(regexp = "[-+]?\\d+")
+    @Pattern(regexp = "[-+]?\\d*")
     private String secondOperand;
 
     private String operation;
