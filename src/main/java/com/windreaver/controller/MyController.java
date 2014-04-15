@@ -28,6 +28,7 @@ public class MyController {
     public String addContact(@Valid Operands operands, BindingResult result, Model model) {
         LOGGER.entry("Operation " + operands.getOperation());
         if (result.hasErrors()) {
+            model.addAttribute("result", "");
             return LOGGER.exit("pageview");
         } else {
             String operation = operands.getOperation();
