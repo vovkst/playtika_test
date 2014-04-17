@@ -1,13 +1,16 @@
 package com.windreaver.form;
 
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class Operands {
 
     @Pattern(regexp = "[-+]?\\d+")
+    @Size(max = 9)
     private String firstOperand;
 
     @Pattern(regexp = "[-+]?\\d*")
+    @Size(max = 9)
     private String secondOperand;
 
     private String operation;

@@ -32,8 +32,8 @@ public class MyController {
             return LOGGER.exit("pageview");
         } else {
             String operation = operands.getOperation();
-            int firstOperand = 0;
-            int secondOperand = 0;
+            long firstOperand = 0;
+            long secondOperand = 0;
             if (!operands.getFirstOperand().equals("")) {
                 firstOperand = Integer.valueOf(operands.getFirstOperand());
             }
@@ -47,10 +47,10 @@ public class MyController {
             } else if (operation.equals("*")) {
                 model.addAttribute("result", firstOperand * secondOperand);
             } else if (operation.equals("/")) {
-                if(secondOperand == 0) {
+                if (secondOperand == 0) {
                     model.addAttribute("result", "NaN");
                 } else {
-                    model.addAttribute("result", (float)firstOperand / (float)secondOperand);
+                    model.addAttribute("result", (float) firstOperand / (float) secondOperand);
                 }
             } else {
                 model.addAttribute("result", Math.sqrt(firstOperand));
